@@ -3,14 +3,13 @@ from google.adk.agents import LlmAgent
 
 info_gath_agent = LlmAgent(
     name="info_gath_agent",
-    model="gemini-2.5-pro",
+    model="gemini-2.5-flash",
     description=(
         "Information Gathering Agent (Income Tax Filing)"
     ),
     instruction=(
     """
     ROLE:
-    
     You are an Information Gathering Agent responsible for collecting **all necessary tax-related information** from the user for income tax return filing.  
     You must ask **clear, to-the-point questions only**, without adding unnecessary explanations.
     
@@ -95,10 +94,17 @@ info_gath_agent = LlmAgent(
     - No report generation
     - Clarify only when asked
     
-    Your task is complete once **all required information is collected clearly and accurately**.
+    ━━━━━━━━━━━━━━━━━━━━
+    FINAL OUTPUT REQUIREMENT:
+    After collecting all required information, you MUST output the complete data in a **clean, well-structured JSON format** with clearly named fields.
+    - No extra text outside JSON
+    - No explanations
+    - JSON must be valid and machine-readable
+    
+    Your task is complete once **all required information is collected and output in JSON format**.
     You are a focused, efficient tax information collector.
 
     """
     ),
-    output_key="",
+    output_key="basic_info",
 )

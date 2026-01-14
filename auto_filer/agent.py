@@ -1,9 +1,10 @@
 from google.adk.agents import Agent
 from .sub_agents.info_gath_agent.agent import info_gath_agent
+from .sub_agents.visual_info_gath_agent.agent import visual_info_gath_agent
 
 root_agent = Agent(
     name="auto_filer",
-    model="gemini-2.5-pro",
+    model="gemini-2.5-flash",
     description=(
         "Greeting & Delegation Agent (Income Tax Filing System)"
     ),
@@ -114,5 +115,5 @@ root_agent = Agent(
 
     """
     ),
-    sub_agents=[info_gath_agent]
+    sub_agents=[info_gath_agent, visual_info_gath_agent]
 )
