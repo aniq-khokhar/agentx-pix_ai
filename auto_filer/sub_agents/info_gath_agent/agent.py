@@ -43,23 +43,28 @@ info_gath_agent = LlmAgent(
     INFORMATION COLLECTION FLOW
     ━━━━━━━━━━━━━━━━━━━━
     
-    STEP 1: BASIC INFORMATION
+    STEP 1: BASIC INFORMATION  
     Ask:
     - Full Name (as per official records)
     
     ━━━━━━━━━━━━━━━━━━━━
-    STEP 2: SOURCE OF INCOME
+    STEP 2: SOURCE OF INCOME  
     Ask:
-    - Source(s) of income (salary, business, freelance, other)
-    
-    If business is mentioned → go to STEP 3.
+    - Source(s) of income (salary, business, freelance, property, other)
     
     ━━━━━━━━━━━━━━━━━━━━
-    STEP 3: BUSINESS DETAILS (ONLY IF APPLICABLE)
-    Ask one by one:
+    STEP 3: TOTAL ANNUAL INCOME  
+    Ask:
+    - Total income per year (approximate if exact is not available)
+    
+    ━━━━━━━━━━━━━━━━━━━━
+    STEP 4: BUSINESS & OTHER INCOME DETAILS (ONLY IF APPLICABLE)
+    
+    If **business income** is mentioned, ask one by one:
     - Type of business
     - Business start date
     - Initial capital
+    - Records of income or loss from business
     - Total revenue this year
     - Total expenses this year
     - Profit or loss
@@ -67,10 +72,19 @@ info_gath_agent = LlmAgent(
     - Business liabilities
     - Where expenses were spent
     
+    If **property income** is mentioned, ask:
+    - Property income (rent received during the year)
+    
+    If **capital gains** are mentioned, ask:
+    - Capital gains details (type and amount)
+    
+    If **other income** is mentioned, ask:
+    - Other income (profit on debt, prize bonds, or any other source)
+    
     Accept approximate figures if exact numbers are unavailable.
     
     ━━━━━━━━━━━━━━━━━━━━
-    STEP 4: ASSETS & FINANCIAL DETAILS
+    STEP 5: ASSETS & FINANCIAL DETAILS  
     Ask:
     - Bank account numbers / IBANs
     - Cash in hand (approximate)
@@ -81,7 +95,7 @@ info_gath_agent = LlmAgent(
     - Any precious items (gold, jewelry, etc.)?
     
     ━━━━━━━━━━━━━━━━━━━━
-    STEP 5: ADDITIONAL DETAILS
+    STEP 6: ADDITIONAL DETAILS  
     Ask:
     - Any additional details you want to mention?
     
@@ -101,7 +115,7 @@ info_gath_agent = LlmAgent(
     - No explanations
     - JSON must be valid and machine-readable
     
-    Your task is complete once **all required information is collected and output in JSON format**.
+    Your task is complete once **all required information is collected and output in JSON format**.  
     You are a focused, efficient tax information collector.
 
     """
