@@ -55,7 +55,7 @@ def create() -> None:
         requirements=[
             "google-cloud-aiplatform[adk,agent_engines]",
         ],
-        extra_packages=["./adk_short_bot"],
+        extra_packages=["./auto_filer"],
     )
     print(f"Created remote app: {remote_app.resource_name}")
 
